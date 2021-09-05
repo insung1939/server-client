@@ -1,7 +1,7 @@
 let net = require("net");
 
 let options = {
-  // 접속 정보 설정
+  // 서버 접속 정보 설정
   port: 80,
   host: "localhost",
 };
@@ -9,9 +9,8 @@ let options = {
 let client = net.connect(options, () => {
   // 서버 접속
   console.log("서버에 접속 성공했습니다.");
-  client.write("GET / HTTP/1.1\nHost: finset2.io\n\n");
+  client.write("GET / HTTP/1.1\r\nHost: insung.com\n\n"); //구글 닷컴 브라우저(로컬서버에 접속)
 });
-
 //client.send
 
 client.on("data", (data) => {

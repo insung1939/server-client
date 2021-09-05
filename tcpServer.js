@@ -9,13 +9,13 @@ let server = net.createServer((socket) => {
     const headers = {}; //헤더 객체로 선언
     let path = ""; //path 선언
     console.log("data: " + data); //http 메시지전체를 볼 수 있음
-    //console.log("lines: " + lines[0]); //http startline 보여줌
+    console.log("lines: " + lines[1]); //http startline 보여줌
     for (let i = 0; i < lines.length; i++) {
       if (i === 0) {
         path = lines[i].split(" ")[1]; //http startline을 ' '으로 나누고 path만 추출
       } else {
         let parsing = lines[i].split(": "); // key, value로 나눠서 parsing
-        const key = parsing[0].toLowerCase(); //key 값은 소문자로..
+        const key = parsing[0].toLowerCase(); //key 값은 소문자로..(uniform)
         const value = parsing[1]; //value 값 추출
         headers[key] = value; //헤더에 키-값 으로 객체 생성
       }
@@ -54,7 +54,7 @@ let server = net.createServer((socket) => {
         } else {
           socket.write(`HTTP/1.1 200 OK\n\n${body}`); //이미지 http 아닌 경우의 response
         }
-        socket.end();
+        socket.end(); //connection이 종료될 경우 쓰는 것.
       });
     } else if (domain == "finset.io") {
       socket.write(
