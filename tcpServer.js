@@ -9,7 +9,7 @@ let server = net.createServer((socket) => {
     const headers = {}; //헤더 객체로 선언
     let path = ""; //path 선언
     console.log("data: " + data); //http 메시지전체를 볼 수 있음
-    console.log("lines: " + lines[1]); //http startline 보여줌
+    //console.log("lines: " + lines[0]); //http startline 보여줌
     for (let i = 0; i < lines.length; i++) {
       if (i === 0) {
         path = lines[i].split(" ")[1]; //http startline을 ' '으로 나누고 path만 추출
